@@ -1,0 +1,41 @@
+{:hook('footer')}
+<div class="firend-link">
+    <div class="links">
+    	<span>Links:</span>
+		<php>$links=sp_getlinks();</php>
+		<foreach name="links" item="vo">
+			<a href="{$vo.link_url}" target="{$vo.link_target}">{$vo.link_name}</a>
+		</foreach>
+	</div>
+</div>
+
+<div id="footer">
+    <div class="contactBox">
+    	<div class="icobox">
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+        <a href="#"><i class="fa fa-skype"></i></a>
+        <a href="#"><i class="fa fa-qq"></i></a>
+        <a href="#"><i class="fa fa-weixin"></i></a>
+       </div>
+    </div>
+    
+	<div class="copyright">
+    	<div class="contacts">
+        	<p>
+            	<span>Tel:+86-15852521542</span>
+            	<span>Email:serivsce#163.com</span>
+            </p>
+            <p>
+            	Address:Quanzhou,Fujian Province.
+            </p>
+        </div>
+        <div class="banquan">
+			Copyright Reserved by <a href="http://www.hkorion.com">hkorion.com</a>
+        </div>
+	</div>
+</div>
+<div id="backtotop">
+	<i class="fa fa-arrow-circle-up"></i>
+</div>
+{$site_tongji}

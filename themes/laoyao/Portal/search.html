@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>SEARCH - {$site_name} </title>
+		<meta name="keywords" content="" />
+		<meta name="description" content="">
+		<tc_include file="Public:head" />
+	</head>
+<body class="">
+<div class="wrapper">
+<div class="pl20 pr20">
+<tc_include file="Public:nav" />
+<div class="clearfix"></div>
+  <php>
+$home_slides=sp_getslide("products_ads");
+$home_slides=empty($home_slides)?null:$home_slides;
+</php>
+<div id="homesliderads">
+	<foreach name="home_slides" item="vo">
+		<a href="{$vo.slide_url}"><img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt=""></a>
+	</foreach>
+</div>
+<div class="container tc-main">
+			<div class="mains-title">
+						<php>
+							$result=sp_sql_posts_paged_bykeyword($keyword,"",20);
+						</php>
+						<h3>'{$keyword}'  Find Results</h3>
+						<p>{$result['count']} Results</p>
+					</div>
+					
+					<volist name="result['posts']" id="vo">
+					<php>
+						$smeta=json_decode($vo['smeta'], true);
+					</php>
+					
+					<div class="list-boxes">
+						<h2><a href="{:leuu('article/index',array('id'=>$vo['tid']))}">{$vo.post_title}</a></h2>
+						<p>{$vo.post_excerpt}</p>
+						<div class="infos">
+							<div class="pull-left">
+								<div class="list-actions">
+								<a href="javascript:;"><i class="fa fa-eye"></i><span>{$vo.post_hits}</span></a>
+								</div>
+							</div>
+							<a class="btn btn-warning pull-right" href="{:leuu('article/index',array('id'=>$vo['tid']))}">Details >></a>
+						</div>
+					</div>
+					</volist>
+				
+					<div class="pagination">
+							<ul>
+								{$result['page']}
+							</ul>
+					</div>
+
+				</div>
+ </div>  
+       
+<tc_include file="Public:footer"/>
+ </div>  
+<tc_include file="Public:scripts"/>
+</body>
+</html>

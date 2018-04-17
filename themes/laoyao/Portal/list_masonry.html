@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{$name} {$seo_title} {$site_name}</title>
+<meta name="keywords" content="{$seo_keywords}" />
+<meta name="description" content="{$seo_description}">
+<tc_include file="Public:head" />
+</head>
+<body>
+<div class="wrapper">
+<div class="pl20 pr20">
+	<tc_include file="Public:nav" />
+<div class="clearfix"></div>
+  <php>
+$home_slides=sp_getslide("products_ads");
+$home_slides=empty($home_slides)?null:$home_slides;
+</php>
+<div id="homesliderads">
+	<foreach name="home_slides" item="vo">
+		<a href="{$vo.slide_url}"><img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt=""></a>
+	</foreach>
+</div>
+	<div class="container">
+
+		<div class="pg-opt pin">
+			<div class="container-pro">
+				<h2>
+                <span><i class="fa fa-list" style="margin-right:10px;"></i>{$name}</span>
+                {:now_here($cat_id, $post_title)}
+                </h2>
+			</div>
+		</div>
+
+		<div class="container mt20 mb20">
+			<div>
+				<php> 
+                 $lists = sp_sql_posts_paged_bycatid($cat_id,"order:istop DESC,recommended DESC,listorder DESC,post_date DESC;",20);
+                </php>
+				<div id="container">
+					<div class="grid-sizer"></div>
+					<volist name="lists['posts']" id="vo"> 
+                    
+                    <php>
+					$smeta=json_decode($vo['smeta'], true); 
+                    </php>
+
+					<div class="item">
+						<div class="tcGridbox">
+							<div class="header">
+
+								<if condition="!empty($smeta['thumb'])">
+								<div class="item-image">
+									<a href="{:leuu('article/index',array('id'=>$vo['tid'],'cid'=>$vo['term_id']))}">
+										<img src="{:sp_get_asset_upload_path($smeta['thumb'])}"
+										class="img-responsive" alt="{$vo.post_title}">
+									</a>
+								</div>
+								<else />
+								</if>
+
+								<h3>
+									<a href="{:leuu('article/index',array('id'=>$vo['tid'],'cid'=>$vo['term_id']))}">{$vo.post_title}</a>
+								</h3>
+							</div>
+							<div class="body">
+								<a href="{:leuu('article/index',array('id'=>$vo['tid'],'cid'=>$vo['term_id']))}">{$vo.post_excerpt|msubstr=0,256}</a>
+							</div>
+							<div class="footer">
+								<div class="pull-left">
+									<span class="meta">{$vo.post_date}</span>
+								</div>
+								<div class="pull-right">
+									<a href="javascript:;"><i class="fa fa-eye"></i><span>{$vo.post_hits}</span></a>
+								</div>
+								<div class="clearfix"></div>
+							</div>
+						</div>
+					</div>
+					</volist>
+				</div>
+				<div class="pagination"><ul>{$lists['page']}</ul></div>
+			</div>
+		</div>
+</div>
+</div>
+
+		<tc_include file="Public:footer" />
+	</div>
+
+
+	<!-- JavaScript -->
+	<tc_include file="Public:scripts" />
+	<script src="__TMPL__Public/js/imagesloaded.pkgd.min.js"></script>
+	<script src="__TMPL__Public/js/masonry.pkgd.min.js"></script>
+	<script>
+		var $container = $('#container').masonry({
+			columnWidth : '.grid-sizer',
+			itemSelector : '.item'
+		});
+		// layout Masonry again after all images have loaded
+		$container.imagesLoaded(function() {
+			$container.masonry();
+		});
+	</script>
+</body>
+</html>

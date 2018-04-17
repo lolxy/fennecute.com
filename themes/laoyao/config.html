@@ -1,0 +1,27 @@
+<php>
+$modelTerm = M("Terms");
+$termIds = $modelTerm->select();
+foreach($termIds as $k=>$vo){
+	$termId[$k] = $vo['term_id'];
+}
+$portal_index_lastnews = join(',',$termId);
+$tmpl=sp_get_theme_path();
+
+$default_home_slides=array(
+	array(
+		"slide_name"=>"ThinkCMFX2.1.0发布啦！",
+		"slide_pic"=>$tmpl."Public/images/demo/1.jpg",
+		"slide_url"=>"",
+	),
+	array(
+		"slide_name"=>"ThinkCMFX2.1.0发布啦！",
+		"slide_pic"=>$tmpl."Public/images/demo/2.jpg",
+		"slide_url"=>"",
+	),
+	array(
+		"slide_name"=>"ThinkCMFX2.1.0发布啦！",
+		"slide_pic"=>$tmpl."Public/images/demo/3.jpg",
+		"slide_url"=>"",
+	),
+);
+</php>

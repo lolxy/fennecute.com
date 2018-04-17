@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+	<html lang="en">
+
+	<head>
+
+		<title>ORION-Success cue</title>
+
+		<tc_include file="Public/head"/>
+
+		<style type="text/css">
+
+		*{ padding: 0; margin: 0; }
+
+		body{ background: #fff; font-family: '微软雅黑'; color: #333; font-size: 16px; }
+
+		.system-message{width:40%;background:#fff;margin:20px auto;text-align: center;box-shadow:1px 1px 3px #e2e2e2;border: 1px solid #336699;padding-bottom: 10px;}
+
+		.system-message h1{ font-size:15px; font-weight: normal; line-height:40px;height:40px;text-align: center;background: #336699;color:#fff;}
+
+		.system-message .jump{height:30px;line-height:30px;font-size:14px;color:424242;}
+
+		.system-message .success,.system-message .error{ line-height:3em; font-size:14px;color:#ff0000;}
+
+		.system-message .detail{ font-size: 12px; line-height: 20px; margin-top: 12px; display:none}
+		
+		#wait{font-weight:200;color:#336699;}
+
+		</style>
+	</head>
+
+<body class="body-white">
+<div class="wrapper">
+<div class="pl20 pr20">
+	<tc_include file="Public/nav"/>
+
+	<div class="system-message">
+
+	<present name="message">
+
+	<h1>Prompt</h1>
+
+	<p class="success"><?php echo($message); ?></p>
+
+	<else/>
+
+	<h1>Prompt</h1>
+
+	<p class="error"><?php echo($error); ?></p>
+
+	</present>
+
+	<p class="detail"></p>
+
+	<p class="jump">
+
+	ORION：Page automatic <a id="href" href="<?php echo($jumpUrl); ?>">jump</a> Waiting time： <b id="wait"><?php echo($waitSecond); ?></b>
+
+	</p>
+
+	</div>
+
+	<script type="text/javascript">
+
+	(function(){
+
+	var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+
+	var interval = setInterval(function(){
+
+		var time = --wait.innerHTML;
+
+		if(time <= 0) {
+
+			location.href = href;
+
+			clearInterval(interval);
+
+		};
+
+	}, 1000);
+
+	})();
+
+	</script>
+</div>
+
+<tc_include file="Public/footer"/>
+</div>
+</body>
+
+</html>

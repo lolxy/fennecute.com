@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<title>{$post_title} {$site_name} </title>
+		<meta name="keywords" content="{$post_keywords}" />
+		<meta name="description" content="{$post_excerpt}">
+		<tc_include file="Public:head" />
+		<style>
+			#article_content img{height:auto !important}
+		</style>
+        <link href="__TMPL__Public/css/slippry/slippry.css" rel="stylesheet">
+	</head>
+<body>
+<div class="wrapper">
+<div class="pl20 pr20">
+<tc_include file="Public:nav" />
+<div class="clearfix"></div>
+<div class="pageBox">
+	<div class="row">	
+<php>
+if($_REQUEST["id"]==1){
+$home_slides=sp_getslide("aboutus_ads");
+$home_slides=empty($home_slides)?null:$home_slides;
+}else{
+$home_slides=sp_getslide("contactus_ads");
+$home_slides=empty($home_slides)?null:$home_slides;
+}
+</php>
+<div id="homesliderads">
+	<foreach name="home_slides" item="vo">
+		<a href="{$vo.slide_url}"><img src="{:sp_get_asset_upload_path($vo['slide_pic'])}" alt=""></a>
+	</foreach>
+</div>
+
+        <div class="contain-wrapper">
+            <div class="leftbox">
+            	<div class="p-box mb10">
+                    <h2>Products</h2>
+                    <div class="pro-cates">
+                        <?php
+                            $term_id=3;
+                            $terms=sp_get_child_terms($term_id); //获取子分类信息
+                            foreach($terms as $val){
+                            	$child_id=$val['term_id'];
+                                $termss = sp_get_child_terms($child_id);
+                                $urlp = leuu('portal/list/index',array('id'=>$val['term_id']));
+                                if(!empty($termss)){
+                                echo '<div class=listyle><h3 class=hasChilds><a href="'.$urlp.'">'.$val['name'].'</a><i class="fa fa-caret-down"></i></h3>';
+                                echo '<div class=lichild><ul>';
+                                    foreach($termss as $cval){
+                                        $urlc = leuu('portal/list/index',array('id'=>$cval['term_id']));
+                                        echo '<li><a href="'.$urlc.'">'.$cval['name'].'</a></li>';
+                                    }
+                                echo '</ul></div>';
+                                }else{
+                                echo '<div class=listyle><h3><a href="'.$urlp.'">'.$val['name'].'</a></h3>';
+                                }
+                                echo '</div>';
+                            }
+                        ?>
+                    </div>
+                </div>
+                
+                <div class="p-box">
+                    <h2>Contact Us</h2>
+                    <div class="contcs">
+                        <ul>
+                        	<li>
+                            	<i class="fa fa-phone-square"></i>
+                                <span>+86-15825425125</span>
+                            </li>
+                            <li>
+                            	<i class="fa fa-envelope"></i>
+                                <span>hkorion#hkorion.com</span>
+                            </li>
+                            <li>
+                            	<i class="fa fa-fax"></i>
+                                <span>+86-059525652521</span>
+                            </li>
+                            <li>
+                            	<i class="fa fa-map-marker"></i>
+                                <span>JinJiang,Quanzhou,Fujian Province.JinJiang,Quanzhou,Fujian Province.JinJiang,Quanzhou,Fujian Province.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rightbox">
+
+                <h2>
+                    <i class="fa fa-tags"></i>{$post_title}
+                    <span>
+                        Current : <a href="__APP__">Home</a> / {$post_title}
+                    </span>
+                </h2>
+                <div id="article_content">
+                {$post_content}
+                </div>
+                
+                {:hook('comment',array(
+                    'post_id'=>$id,
+                    'post_table'=>'posts',
+                    'post_title'=>$post_title
+                ))}
+            </div>
+        </div>	
+        
+	</div>
+</div>
+</div>             
+<tc_include file="Public:footer"/>
+</div>
+<tc_include file="Public:scripts"/>
+</body>
+</html>

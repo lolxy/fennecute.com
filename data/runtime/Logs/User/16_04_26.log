@@ -1,0 +1,49 @@
+[ 2016-04-26T14:12:47+08:00 ] 127.0.0.1 /index.php/user/index/is_login
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000591s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001090s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002339s ]
+NOTIC: [8] Undefined index: url J:\laoyao\application\Common\Controller\AppframeController.class.php 第 24 行.
+
+[ 2016-04-26T14:12:57+08:00 ] 127.0.0.1 /index.php/user/index/is_login
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000684s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000839s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001906s ]
+NOTIC: [8] Undefined index: url J:\laoyao\application\Common\Controller\AppframeController.class.php 第 24 行.
+
+[ 2016-04-26T14:13:01+08:00 ] 127.0.0.1 /index.php/user/index/is_login
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000539s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000894s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001856s ]
+NOTIC: [8] Undefined index: url J:\laoyao\application\Common\Controller\AppframeController.class.php 第 24 行.
+
+[ 2016-04-26T14:13:04+08:00 ] 127.0.0.1 /index.php/user/index/is_login
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000556s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000812s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001922s ]
+NOTIC: [8] Undefined index: url J:\laoyao\application\Common\Controller\AppframeController.class.php 第 24 行.
+
+[ 2016-04-26T14:13:04+08:00 ] 127.0.0.1 /index.php/user/index/is_login
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000593s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.001076s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.002243s ]
+NOTIC: [8] Undefined index: url J:\laoyao\application\Common\Controller\AppframeController.class.php 第 24 行.
+
+[ 2016-04-26T14:13:14+08:00 ] 127.0.0.1 /index.php/user/index/is_login
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000554s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000867s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001864s ]
+NOTIC: [8] Undefined index: url J:\laoyao\application\Common\Controller\AppframeController.class.php 第 24 行.
+
+[ 2016-04-26T14:13:17+08:00 ] 127.0.0.1 /index.php/user/index/is_login
+INFO: [ app_begin ] --START--
+INFO: Run Behavior\ReadHtmlCacheBehavior [ RunTime:0.000519s ]
+INFO: Run Behavior\CheckLangBehavior [ RunTime:0.000942s ]
+INFO: [ app_begin ] --END-- [ RunTime:0.001890s ]
+NOTIC: [8] Undefined index: url J:\laoyao\application\Common\Controller\AppframeController.class.php 第 24 行.
+
